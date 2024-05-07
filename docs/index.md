@@ -10,9 +10,9 @@
 [![GitHub license](https://img.shields.io/github/license/aviksaikat/nipe_py?style=flat&color=1573D5)](https://github.com/aviksaikat/nipe_py/blob/main/LICENSE)
 ---
 
-**Documentation**: <a href="https://avik_saikat.github.io/nipe_py/" target="_blank">https://avik_saikat.github.io/nipe_py/</a>
+**Documentation**: <a href="https://aviksaikat.github.io/nipe_py/" target="_blank">https://aviksaikat.github.io/nipe_py/</a>
 
-**Source Code**: <a href="https://github.com/avik_saikat/nipe_py" target="_blank">https://github.com/avik_saikat/nipe_py</a>
+**Source Code**: <a href="https://github.com/aviksaikat/nipe_py" target="_blank">https://github.com/aviksaikat/nipe_py</a>
 
 ---
 

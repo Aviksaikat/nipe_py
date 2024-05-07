@@ -25,8 +25,8 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://avik_saikat.github.io/nipe_py/"
-Source = "https://github.com/avik_saikat/nipe_py"
+Documentation = "https://aviksaikat.github.io/nipe_py/"
+Source = "https://github.com/aviksaikat/nipe_py"
 
 # mypy
 [tool.mypy]
