@@ -1,7 +1,7 @@
 # nipe_py
 
 <p align="center">
-    <img src="./assets/banner.png">
+    <img src="https://github.com/Aviksaikat/nipe_py/assets/banner.png">
 </p>
 
 <center>
@@ -49,7 +49,7 @@ Commands:
 ```
 
 ## Demo
-![](./assets/demo.gif)
+![](https://github.com/Aviksaikat/nipe_py/assets/demo.gif)
 
 ## License
 
