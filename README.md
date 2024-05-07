@@ -1,13 +1,13 @@
 # nipe_py
 
 <p align="center">
-    <em></em>
+    <img src="./assets/banner.png">
 </p>
 
-[![build](https://github.com/avik_saikat/nipe_py/workflows/Build/badge.svg)](https://github.com/avik_saikat/nipe_py/actions)
-[![codecov](https://codecov.io/gh/avik_saikat/nipe_py/branch/master/graph/badge.svg)](https://codecov.io/gh/avik_saikat/nipe_py)
-[![PyPI version](https://badge.fury.io/py/nipe_py.svg)](https://badge.fury.io/py/nipe_py)
 
+
+[![PyPI version](https://badge.fury.io/py/nipe_py.svg)](https://badge.fury.io/py/nipe_py)
+[![GitHub license](https://img.shields.io/github/license/aviksaikat/nipe_py?style=flat&color=1573D5)](https://github.com/aviksaikat/nipe_py/blob/main/LICENSE)
 ---
 
 **Documentation**: <a href="https://avik_saikat.github.io/nipe_py/" target="_blank">https://avik_saikat.github.io/nipe_py/</a>
@@ -41,7 +41,7 @@ Commands:
 ```
 
 ## Demo
-
+![](./assets/demo.gif)
 
 ## License
 
