@@ -16,57 +16,32 @@
 
 ---
 
-## Development
+Python version of [nipe](https://github.com/htrgouvea/nipe): An engine to make Tor Network your default gateway.
 
-### Setup environment
+## Installation
 
-We use [Hatch](https://hatch.pypa.io/latest/install/) to manage the development environment and production build. Ensure it's installed on your system.
-
-### Run unit tests
-
-You can run all the tests with:
-
-```bash
-hatch run test
+```sh
+pip install nipe_py
 ```
 
-### Format the code
+## Usage
+```sh
+$ nipe --help
+Usage: nipe [OPTIONS] COMMAND [ARGS]...
 
-Execute the following command to apply linting and check typing:
+Options:
+  --help  Show this message and exit.
 
-```bash
-hatch run lint
+Commands:
+  install  Install dependencies
+  restart  Restart the Nipe circuit
+  start    Start routing
+  status   See status
+  stop     Stop routing
 ```
 
-### Publish a new version
+## Demo
 
-You can bump the version, create a commit and associated tag with one command:
-
-```bash
-hatch version patch
-```
-
-```bash
-hatch version minor
-```
-
-```bash
-hatch version major
-```
-
-Your default Git text editor will open so you can add information about the release.
-
-When you push the tag on GitHub, the workflow will automatically publish it on PyPi and a GitHub release will be created as draft.
-
-## Serve the documentation
-
-You can serve the Mkdocs documentation with:
-
-```bash
-hatch run docs-serve
-```
-
-It'll automatically watch for changes in your code.
 
 ## License
 

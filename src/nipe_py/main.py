@@ -1,30 +1,44 @@
 import click
 from nipe_py import Stop, Start, Restart
 from nipe_py import Status, Install
+from rich import print
+from rich.panel import Panel
+
 
 @click.group()
 def cli():
     pass
+
 
 @cli.command()
 def install():
     """Install dependencies"""
     Install()
 
+
 @cli.command()
 def start():
     """Start routing"""
-    Start()
+    st = Start()
+    st.start()
+    print(Panel("[+] [green]nipe has been started...."))
+
 
 @cli.command()
 def stop():
     """Stop routing"""
-    Stop()
+    stop = Stop()
+    stop.stop()
+    print(Panel("[+] [red]nipe has been stopped...."))
+
 
 @cli.command()
 def restart():
     """Restart the Nipe circuit"""
-    Restart()
+    rst = Restart()
+    rst.restart()
+    print(Panel("[+] [red]nipe has been restated...."))
+
 
 @cli.command()
 def status():

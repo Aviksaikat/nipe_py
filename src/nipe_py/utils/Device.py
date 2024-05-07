@@ -1,15 +1,15 @@
 from collections import namedtuple
 
 
-#* https://stackoverflow.com/questions/29030135/module-to-parse-a-simple-syntax-in-python
+# * https://stackoverflow.com/questions/29030135/module-to-parse-a-simple-syntax-in-python
 def read_release_file() -> namedtuple:
-    with open('/etc/os-release') as f:
-        keys, values = zip(*[
-            (k.lower(), v.strip('\'"'))
-            for (k, v) in (
-                line.strip().split('=', 1) for line in f.read().strip().split('\n')
-            )]
-        ) 
+    with open("/etc/os-release") as f:
+        keys, values = zip(
+            *[
+                (k.lower(), v.strip("'\""))
+                for (k, v) in (line.strip().split("=", 1) for line in f.read().strip().split("\n"))
+            ]
+        )
     r = namedtuple("OSRelease", keys)(*values)
     return r
 
@@ -20,10 +20,7 @@ class Device:
         id_like = config.id_like if config.id_like else ""
         id_distro = config.id if config.id else "ID"
 
-        self.device = {
-            "username": "debian-tor",
-            "distribution": "debian"
-        }
+        self.device = {"username": "debian-tor", "distribution": "debian"}
 
         if "fedora" in id_like.lower() or "fedora" in id_distro.lower():
             self.device["username"] = "toranon"

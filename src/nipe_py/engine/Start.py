@@ -1,68 +1,88 @@
 import subprocess
 from pathlib import Path
 from nipe_py.utils.Device import Device
+from rich.console import Console
+
+config_path = Path(__file__).resolve().parent / "../../../.configs"
+
+console = Console()
+
 
 class Start:
     def __init__(self):
         device = Device()
         self.device = device.get_device()
-        dns_port = "9061"
-        transfer_port = "9051"
-        table = ["nat", "filter"]
-        network = "10.66.0.0/255.255.0.0"
-        start_tor = "systemctl start tor"
+        self.dns_port = "9061"
+        self.transfer_port = "9051"
+        self.table = ["nat", "filter"]
+        self.network = "10.66.0.0/255.255.0.0"
+        self.start_tor = "systemctl start tor"
 
-        if self.device.distribution == "void":
-            start_tor = "sv start tor > /dev/null"
+        if self.device["distribution"] == "void":
+            self.start_tor = "sv start tor > /dev/null"
 
         elif Path("/etc/init.d/tor").exists():
-            start_tor = "/etc/init.d/tor start > /dev/null"
+            self.start_tor = "/etc/init.d/tor start > /dev/null"
 
     def start(self) -> bool:
-        subprocess.call(f"tor -f .configs/{self.device.distribution}-torrc > /dev/null", shell=True)
-        subprocess.call(start_tor, shell=True)
+        try:
+            subprocess.check_call(f"tor -f {config_path}/{self.device['distribution']}-torrc > /dev/null", shell=True)
+            subprocess.check_call(self.start_tor, shell=True)
 
-        for t in table:
-            target = "ACCEPT"
+            for t in self.table:
+                self.target = "ACCEPT"
 
-            if t == "nat":
-                target = "RETURN"
+                if t == "nat":
+                    self.target = "RETURN"
 
-            subprocess.call(f"iptables -t {t} -F OUTPUT", shell=True)
-            subprocess.call(f"iptables -t {t} -A OUTPUT -m state --state ESTABLISHED -j {target}", shell=True)
-            subprocess.call(f"iptables -t {t} -A OUTPUT -m owner --uid {device.username} -j {target}", shell=True)
+                subprocess.check_call(f"iptables -t {t} -F OUTPUT", shell=True)
+                subprocess.check_call(
+                    f"iptables -t {t} -A OUTPUT -m state --state ESTABLISHED -j {self.target}", shell=True
+                )
+                subprocess.check_call(
+                    f"iptables -t {t} -A OUTPUT -m owner --uid {self.device['username']} -j {self.target}", shell=True
+                )
 
-            match_dns_port = dns_port
+                self.match_dns_port = self.dns_port
 
-            if t == "nat":
-                target = f"REDIRECT --to-ports {dns_port}"
-                match_dns_port = "53"
+                if t == "nat":
+                    self.target = f"REDIRECT --to-ports {self.dns_port}"
+                    self.match_dns_port = "53"
 
-            subprocess.call(f"iptables -t {t} -A OUTPUT -p udp --dport {match_dns_port} -j {target}", shell=True)
-            subprocess.call(f"iptables -t {t} -A OUTPUT -p tcp --dport {match_dns_port} -j {target}", shell=True)
+                subprocess.check_call(
+                    f"iptables -t {t} -A OUTPUT -p udp --dport {self.match_dns_port} -j {self.target}", shell=True
+                )
+                subprocess.check_call(
+                    f"iptables -t {t} -A OUTPUT -p tcp --dport {self.match_dns_port} -j {self.target}", shell=True
+                )
 
-            if t == "nat":
-                target = f"REDIRECT --to-ports {transfer_port}"
+                if t == "nat":
+                    self.target = f"REDIRECT --to-ports {self.transfer_port}"
 
-            subprocess.call(f"iptables -t {t} -A OUTPUT -d {network} -p tcp -j {target}", shell=True)
+                subprocess.check_call(
+                    f"iptables -t {t} -A OUTPUT -d {self.network} -p tcp -j {self.target}", shell=True
+                )
 
-            if t == "nat":
-                target = "RETURN"
+                if t == "nat":
+                    self.target = "RETURN"
 
-            subprocess.call(f"iptables -t {t} -A OUTPUT -d 127.0.0.1/8    -j {target}", shell=True)
-            subprocess.call(f"iptables -t {t} -A OUTPUT -d 192.168.0.0/16 -j {target}", shell=True)
-            subprocess.call(f"iptables -t {t} -A OUTPUT -d 172.16.0.0/12  -j {target}", shell=True)
-            subprocess.call(f"iptables -t {t} -A OUTPUT -d 10.0.0.0/8     -j {target}", shell=True)
+                subprocess.check_call(f"iptables -t {t} -A OUTPUT -d 127.0.0.1/8    -j {self.target}", shell=True)
+                subprocess.check_call(f"iptables -t {t} -A OUTPUT -d 192.168.0.0/16 -j {self.target}", shell=True)
+                subprocess.check_call(f"iptables -t {t} -A OUTPUT -d 172.16.0.0/12  -j {self.target}", shell=True)
+                subprocess.check_call(f"iptables -t {t} -A OUTPUT -d 10.0.0.0/8     -j {self.target}", shell=True)
 
-            if t == "nat":
-                target = f"REDIRECT --to-ports {transfer_port}"
+                if t == "nat":
+                    self.target = f"REDIRECT --to-ports {self.transfer_port}"
 
-            subprocess.call(f"iptables -t {t} -A OUTPUT -p tcp -j {target}", shell=True)
+                subprocess.check_call(f"iptables -t {t} -A OUTPUT -p tcp -j {self.target}", shell=True)
 
-        subprocess.call("iptables -t filter -A OUTPUT -p udp -j REJECT", shell=True)
-        subprocess.call("iptables -t filter -A OUTPUT -p icmp -j REJECT", shell=True)
+            subprocess.check_call("iptables -t filter -A OUTPUT -p udp -j REJECT", shell=True)
+            subprocess.check_call("iptables -t filter -A OUTPUT -p icmp -j REJECT", shell=True)
 
-        subprocess.call("sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null", shell=True)
-        subprocess.call("sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null", shell=True)
+            subprocess.check_call("sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null", shell=True)
+            subprocess.check_call("sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null", shell=True)
 
-        return True
+            return True
+        except subprocess.CalledProcessError:
+            console.print_exception()
+            return False

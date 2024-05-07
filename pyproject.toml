@@ -88,7 +88,7 @@ addopts = "--cov=nipe_py/ --cov-report=term-missing"
 
 
 [project.scripts]
-cli-name = "nipe_py.main:cli"
+nipe = "nipe_py.main:cli"
 
 
 [tool.hatch.metadata]
