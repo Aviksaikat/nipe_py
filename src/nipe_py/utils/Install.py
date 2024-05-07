@@ -13,20 +13,17 @@ class Install:
 
         self.install = {
             "debian" : "apt-get install -y tor iptables",
-			"fedora" : "dnf install -y tor iptables",
-			"centos" : "yum -y install epel-release tor iptables",
-			"void"   : "xbps-install -y tor iptables",
-			"arch"   : "pacman -S --noconfirm tor iptables"
+            "fedora" : "dnf install -y tor iptables",
+            "centos" : "yum -y install epel-release tor iptables",
+            "void"   : "xbps-install -y tor iptables",
+            "arch"   : "pacman -S --noconfirm tor iptables"
         }
 
         if self.device["distribution"] == "void":
             self.stop_tor = "sv stop tor > /dev/null"
-        
         if Path("/etc/init.d/tor").exists():
-            stop_tor = "/etc/init.d/tor stop > /dev/null"
-        
+            self.stop_tor = "/etc/init.d/tor stop > /dev/null"
         try:
             subprocess.call(f"{self.install[self.device['distribution']]} && {self.stop_tor}", shell=True)
-        except Exception as e:
-            console.log(e)
-        
+        except Exception:
+            console.print_exception()

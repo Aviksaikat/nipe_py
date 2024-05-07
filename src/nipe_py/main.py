@@ -1,6 +1,6 @@
 import click
 from nipe_py import Stop, Start, Restart
-from nipe_py import Status, Install, Status
+from nipe_py import Status, Install
 
 @click.group()
 def cli():
@@ -9,7 +9,7 @@ def cli():
 @cli.command()
 def install():
     """Install dependencies"""
-    install = Install()
+    Install()
 
 @cli.command()
 def start():
