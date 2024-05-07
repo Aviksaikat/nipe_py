@@ -3,6 +3,7 @@ from nipe_py import Stop, Start, Restart
 from nipe_py import Status, Install
 from rich import print
 from rich.panel import Panel
+from nipe_py import __version__
 
 
 @click.group()
@@ -44,6 +45,12 @@ def restart():
 def status():
     """See status"""
     Status()
+
+
+@cli.command()
+def version():
+    """Show Version"""
+    print(Panel(f"[green]Version: [yellow]{__version__}"))
 
 
 if __name__ == "__main__":

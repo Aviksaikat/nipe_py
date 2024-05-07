@@ -46,6 +46,7 @@ Commands:
   start    Start routing
   status   See status
   stop     Stop routing
+  version  Show Version
 ```
 
 ## Demo
