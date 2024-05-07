@@ -56,7 +56,7 @@ plugins:
 
 watch:
     - docs
-    - nipe_py
+    - src/nipe_py
 
 nav:
     - About: index.md

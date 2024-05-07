@@ -4,10 +4,17 @@
     <img src="../assets/banner.png">
 </p>
 
+<center>
+
+[![Python](https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white)](https://www.python.org/) [![Hatch project](https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg)](https://github.com/pypa/hatch) [![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=flat&logo=GitHub-Actions&logoColor=white)](https://github.com/features/actions) [![Pytest](https://img.shields.io/badge/Pytest-0A9EDC.svg?style=flat&logo=Pytest&logoColor=white)](https://github.com/aviksaikat/nipe_py/actions/workflows/tests.yml/badge.svg)
 
 
-[![PyPI version](https://badge.fury.io/py/nipe_py.svg)](https://badge.fury.io/py/nipe_py)
+
+[![PyPI version](https://img.shields.io/pypi/v/nipe_py.svg)](https://pypi.org/project/nipe_py)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/nipe_py)](https://pypi.org/project/nipe_py/)
 [![GitHub license](https://img.shields.io/github/license/aviksaikat/nipe_py?style=flat&color=1573D5)](https://github.com/aviksaikat/nipe_py/blob/main/LICENSE)
+
+</center>
 ---
 
 **Documentation**: <a href="https://aviksaikat.github.io/nipe_py/" target="_blank">https://aviksaikat.github.io/nipe_py/</a>
