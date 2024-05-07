@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         python_version: ["3.9", "3.10", "3.11", "3.12"]
+        os: ["ubuntu-latest", "macos", "fedora"]
 
     steps:
     - uses: actions/checkout@v4
@@ -27,6 +28,25 @@ jobs:
     - name: Test
       run: |
         sudo $(which hatch) run nipe --help | grep "Start routing" > /dev/null
+    - name: Run tests in Docker container
+      uses: docker://apple/m1:latest # Example for macOS M1
+      with:
+        args: --rm -v ${{ github.workspace }}:/workspace
+        command: |
+          python -m pip install --upgrade pip
+          pip install hatch
+          hatch env create
+          sudo $(which hatch) run nipe --help | grep "Start routing" > /dev/null
+    - name: Run tests in Docker container
+      uses: docker://fedora:latest # Example for Fedora
+      with:
+        args: --rm -v ${{ github.workspace }}:/workspace
+        command: |
+          python -m pip install --upgrade pip
+          pip install hatch
+          hatch env create
+          sudo $(which hatch) run nipe --help | grep "Start routing" > /dev/null
+
   release:
     runs-on: ubuntu-latest
     needs: test
