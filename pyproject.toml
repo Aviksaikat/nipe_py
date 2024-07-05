@@ -1,7 +1,7 @@
 [project]
 name = "nipe_py"
 authors = [
-  { name = "nipe_py", email = "saikickkarma@protonmail.com" }
+  { name = "nipe_py", email = "github.maturity983@passinbox.com" }
 ]
 description = "An engine to make Tor Network your default gateway."
 readme = "README.md"
@@ -127,6 +127,13 @@ lint-check = [
 ]
 docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/**/*.py",
+  ".configs/*"
+]
+
 
 [build-system]
 requires = ["hatchling", "hatch-regex-commit"]
