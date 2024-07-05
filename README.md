@@ -32,6 +32,13 @@ Python version of [nipe](https://github.com/htrgouvea/nipe): An engine to make T
 pip install nipe_py
 ```
 
+- You need to have tor installed & tor should be running. Confirm it by running
+
+```sh
+# this will start the tor service if not already running. If running then it'll restart it.
+sudo systemctl restart tor
+```
+
 ## Usage
 ```sh
 $ nipe --help

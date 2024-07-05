@@ -129,10 +129,11 @@ docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
 
 [tool.hatch.build.targets.sdist]
-include = [
-  "src/**/*.py",
-  ".configs/*"
-]
+# include = [
+#   "src/**/*.py",
+#   ".configs/*"
+# ]
+exclude = ["build/", "dist/", "docs/", "tests/*", ".github/", "assets/", ".cruft.json", ".editorconfig", "mkdocs.yml"]
 
 
 [build-system]
