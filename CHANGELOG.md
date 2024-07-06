@@ -2,12 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.4] - 2024-07-06
+## [0.1.5] - 2024-07-06
 
 ### 🐛 Bug Fixes
 
 - Pyproject.toml updated to ship the package with proper config files
 - Module not found error
+- Config files path error
+
+### 📚 Documentation
+
+- Changelogs added
 
 ### ⚙️ Miscellaneous Tasks
 

@@ -9,4 +9,4 @@ from nipe_py.engine.Stop import Stop
 
 __all__ = ["Device", "Install", "Status", "Restart", "Start", "Stop"]
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
