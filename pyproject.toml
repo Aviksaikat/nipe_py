@@ -135,13 +135,15 @@ docs-build = "mkdocs build"
 #   "src/**/*.py",
 #   ".configs/*"
 # ]
-exclude = ["build/", "dist/", "docs/", "tests/*", ".github/", "assets/", ".cruft.json", ".editorconfig", "mkdocs.yml"]
+# exclude = ["build/", "dist/", "docs/", "tests/*", ".github/", "assets/", ".cruft.json", ".editorconfig", "mkdocs.yml"]
+only-include = ["src", ".configs"]
 
 [tool.hatch.build.targets.wheel]
-artifacts = [
-  ".configs/*",
-  "*-torrc"
-]
+# artifacts = [
+#   ".configs/*",
+#   "*-torrc"
+# ]
+packages = ["src", ".configs"]
 
 
 [build-system]
