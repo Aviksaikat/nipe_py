@@ -131,19 +131,19 @@ docs-build = "mkdocs build"
 
 # Build configs
 [tool.hatch.build.targets.sdist]
-# include = [
-#   "src/**/*.py",
-#   ".configs/*"
-# ]
+include = [
+  "src/**/*.py",
+  ".configs/*"
+]
 # exclude = ["build/", "dist/", "docs/", "tests/*", ".github/", "assets/", ".cruft.json", ".editorconfig", "mkdocs.yml"]
-only-include = ["src", ".configs"]
+# only-include = ["src/nipe_py/*.py", ".configs"]
 
 [tool.hatch.build.targets.wheel]
 # artifacts = [
 #   ".configs/*",
 #   "*-torrc"
 # ]
-packages = ["src", ".configs"]
+packages = ["src/nipe_py", ".configs"]
 
 
 [build-system]
