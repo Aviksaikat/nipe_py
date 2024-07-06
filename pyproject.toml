@@ -128,12 +128,22 @@ lint-check = [
 docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
 
+
+# Build configs
 [tool.hatch.build.targets.sdist]
-# include = [
-#   "src/**/*.py",
-#   ".configs/*"
+include = [
+  "src/**/*.py",
+  ".configs/*"
+]
+# exclude = ["build/", "dist/", "docs/", "tests/*", ".github/", "assets/", ".cruft.json", ".editorconfig", "mkdocs.yml"]
+# only-include = ["src/nipe_py/*.py", ".configs"]
+
+[tool.hatch.build.targets.wheel]
+# artifacts = [
+#   ".configs/*",
+#   "*-torrc"
 # ]
-exclude = ["build/", "dist/", "docs/", "tests/*", ".github/", "assets/", ".cruft.json", ".editorconfig", "mkdocs.yml"]
+packages = ["src/nipe_py", ".configs"]
 
 
 [build-system]
