@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - Pyproject.toml updated to ship the package with proper config files
+- Module not found error
 
 ### ⚙️ Miscellaneous Tasks
 
