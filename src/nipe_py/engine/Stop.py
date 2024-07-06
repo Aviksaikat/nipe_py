@@ -1,7 +1,9 @@
-from nipe_py.utils.Device import Device
 import subprocess
 from pathlib import Path
+
 from rich.console import Console
+
+from nipe_py.utils.Device import Device
 
 console = Console()
 

@@ -1,9 +1,11 @@
-from nipe_py.utils.Device import Device
 import subprocess
 from pathlib import Path
-from rich.console import Console
+
 from rich import print
+from rich.console import Console
 from rich.panel import Panel
+
+from nipe_py.utils.Device import Device
 
 console = Console()
 
@@ -27,7 +29,10 @@ class Install:
         if Path("/etc/init.d/tor").exists():
             self.stop_tor = "/etc/init.d/tor stop > /dev/null"
         try:
-            subprocess.call(f"{self.install[self.device['distribution']]} && {self.stop_tor}", shell=True)
+            subprocess.call(
+                f"{self.install[self.device['distribution']]} && {self.stop_tor}",
+                shell=True,
+            )
             print(Panel.fit("[+][green]nipe has been installed...."))
         except Exception as _:
             console.print_exception()

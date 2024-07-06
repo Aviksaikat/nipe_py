@@ -1,9 +1,8 @@
 import click
-from nipe_py import Stop, Start, Restart
-from nipe_py import Status, Install
 from rich import print
 from rich.panel import Panel
-from nipe_py import __version__
+
+from nipe_py import Install, Restart, Start, Status, Stop, __version__
 
 
 @click.group()
