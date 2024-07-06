@@ -3,7 +3,7 @@ from pathlib import Path
 from nipe_py.utils.Device import Device
 from rich.console import Console
 
-config_path = Path(__file__).resolve().parent / "../../../.configs"
+config_path = Path(__file__).resolve().parent / "../../.configs"
 
 console = Console()
 
