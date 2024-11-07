@@ -9,4 +9,4 @@ from nipe_py.utils.Status import Status
 
 __all__ = ["Device", "Install", "Status", "Restart", "Start", "Stop"]
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"

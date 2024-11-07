@@ -116,23 +116,13 @@ class Start:
                 if t == "nat":
                     self.target = f"REDIRECT --to-ports {self.transfer_port}"
 
-                subprocess.check_call(
-                    f"iptables -t {t} -A OUTPUT -p tcp -j {self.target}", shell=True
-                )
+                subprocess.check_call(f"iptables -t {t} -A OUTPUT -p tcp -j {self.target}", shell=True)
 
-            subprocess.check_call(
-                "iptables -t filter -A OUTPUT -p udp -j REJECT", shell=True
-            )
-            subprocess.check_call(
-                "iptables -t filter -A OUTPUT -p icmp -j REJECT", shell=True
-            )
+            subprocess.check_call("iptables -t filter -A OUTPUT -p udp -j REJECT", shell=True)
+            subprocess.check_call("iptables -t filter -A OUTPUT -p icmp -j REJECT", shell=True)
 
-            subprocess.check_call(
-                "sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null", shell=True
-            )
-            subprocess.check_call(
-                "sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null", shell=True
-            )
+            subprocess.check_call("sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null", shell=True)
+            subprocess.check_call("sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null", shell=True)
 
             return True
         except subprocess.CalledProcessError:

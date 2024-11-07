@@ -7,9 +7,7 @@ def read_release_file() -> namedtuple:
         keys, values = zip(
             *[
                 (k.lower(), v.strip("'\""))
-                for (k, v) in (
-                    line.strip().split("=", 1) for line in f.read().strip().split("\n")
-                )
+                for (k, v) in (line.strip().split("=", 1) for line in f.read().strip().split("\n"))
             ]
         )
     r = namedtuple("OSRelease", keys)(*values)
@@ -19,8 +17,8 @@ def read_release_file() -> namedtuple:
 class Device:
     def __init__(self):
         config = read_release_file()
-        id_like = config.id_like if config.id_like else ""
-        id_distro = config.id if config.id else "ID"
+        id_like = getattr(config, "id_like", "")
+        id_distro = getattr(config, "id", "ID")
 
         self.device = {"username": "debian-tor", "distribution": "debian"}
 
@@ -28,10 +26,7 @@ class Device:
             self.device["username"] = "toranon"
             self.device["distribution"] = "fedora"
 
-        elif any(
-            dist in id_like.lower() or dist in id_distro.lower()
-            for dist in ["arch", "centos"]
-        ):
+        elif any(dist in id_like.lower() or dist in id_distro.lower() for dist in ["arch", "centos"]):
             self.device["username"] = "tor"
             self.device["distribution"] = "arch"
 
